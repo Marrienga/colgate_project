@@ -1,20 +1,20 @@
 // List of 15 people
 const people = [
-    "Alex Mwaki",
-    "Purity Lorine",
-    "Rockiiy Mshai",
-    "Peter ",
-    "Vallary",
-    "Joy",
-    "Buckley",
-    "Debby",
-    "Weyne",
     "Mwangi",
+    "Weyne",
+    "Rockiiy",
+    "Joy",
+    "Vallary",
+    "Purity",
+    "Buckley",
     "Fred",
-    "Daggy",
-    "William King",
-    "Anna Scott",
-    "Thomas Green"
+    "Alex",
+    "Peter",
+    "Pending...",
+    "Pending...",
+    "Pending...",
+    "Pending...",
+    "Pending..."
 ];
 
 const listContainer = document.getElementById('people-list');
