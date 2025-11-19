@@ -10,7 +10,7 @@ const people = [
     "Fred",
     "Alex",
     "Peter",
-    "Pending...",
+    "Ian Bota...",
     "Pending...",
     "Pending...",
     "Pending...",
@@ -19,35 +19,46 @@ const people = [
 
 const listContainer = document.getElementById('people-list');
 
-// Function to generate the list items
+// Generate the list with buttons
 function generateList() {
     people.forEach((name, index) => {
         const listItem = document.createElement('li');
-        
-        // The display element starts hidden
+
         listItem.innerHTML = `
-            <span class="list-number">${index + 1}.</span> 
-            <button onclick="revealName(${index})">Reveal Name</button>
-            <span id="name-${index}" class="person-name hidden">
-                ${name}
-            </span>
+            <span class="list-number">${index + 1}.</span>
+            <button id="btn-${index}" onclick="revealName(${index})">
+                Reveal Name
+            </button>
+            <span id="name-${index}" class="person-name hidden">${name}</span>
         `;
-        
+
         listContainer.appendChild(listItem);
     });
 }
 
-// Function to reveal the name
+// Reveal the name
 function revealName(index) {
     const nameSpan = document.getElementById(`name-${index}`);
-    const button = nameSpan.previousElementSibling; // Get the button element
+    const button = document.getElementById(`btn-${index}`);
 
-    // Show the name and hide/disable the button
-    nameSpan.classList.remove('hidden');
-    button.textContent = 'Revealed';
-    button.disabled = true;
-    button.classList.add('revealed-button');
+    nameSpan.classList.remove('hidden');      // Show name
+    button.textContent = "Back";              // Change button
+    button.onclick = function () {
+        resetName(index);
+    };
 }
 
-// Initialize the list when the page loads
+// Reset back to default
+function resetName(index) {
+    const nameSpan = document.getElementById(`name-${index}`);
+    const button = document.getElementById(`btn-${index}`);
+
+    nameSpan.classList.add('hidden');         // Hide name
+    button.textContent = "Reveal Name";       // Restore button
+    button.onclick = function () {
+        revealName(index);
+    };
+}
+
+// Initialize list
 generateList();
